@@ -108,8 +108,8 @@ var streetfix=function(){
 	addEvent(rd,'click',function(e){
 		if(!val)myf2()
 		e=ee(e);
-		if(e.id=='xartfix'||fada(e).id=='xartfix')myf1();
-		if(e.id=='artkey'||fada(e).id=='artkey')validate(ul.o,ul.a,myf3);
+		if(e.id=='xconfix'||fada(e).id=='xconfix')myf1();
+		if(e.id=='conkey'||fada(e).id=='conkey')validate(ul.o,ul.a,myf3);
 		
 	});
 	
