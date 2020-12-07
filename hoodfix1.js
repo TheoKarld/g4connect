@@ -74,7 +74,7 @@ function kickll(og){
 	if(!ADM)return;
 	if(ll)return;
 	ll=adminob(og);
-	//putincol(ADM,ll);
+	putincol(ADM,ll);
 	
 }
 function shout(err){
