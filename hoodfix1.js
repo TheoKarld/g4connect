@@ -1,4 +1,4 @@
-var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||9090,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','pic'],S2=['Name','Category','Area'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'];
+var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'];
 
 
 
@@ -47,7 +47,7 @@ var adminob=function(o){
 
 
 function calldb(){
-	MongoClient.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},function(err,plug){
+	MongoClient.connect(url,{useNewUrlParser:true,useUnifiedTopology:true},function(err,plug){
 		if(err){
 			clg('error call');
 			clg(err);
@@ -237,7 +237,7 @@ io.on('connection',function(socket){
 		if(!ll){
 			socket.emit('wedown');
 		}else{
-			socket.emit('oyana',ll);
+			socket.emit('oyana',{o:ll});
 		}
 	});
 	socket.on('baya',function(){

@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Comments','Category','Area'],S2=['Name','Category','Area','Facebook','Whatsapp','votes'],S3=['Name','Area','Facebook','Whatsapp'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={};
+	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={};
 	
 
 function init(){
@@ -66,7 +66,7 @@ function callstreetfix(){
 
 
 var streetfix=function(){
-	var a=S3,b=['insert contestant name, real or nick name.','contestant\'s residential area','contestant\'s facebook username','contestant\'s whatsapp phone number.'],ul=phul(a,b,['','','','number']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New contestant','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','conkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xconfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
+	var a=S3,b=['insert contestant name, real or nick name.','contestant\'s residential area','contestant\'s facebook username','contestant\'s whatsapp phone number.','contestant\'s instagram handle'],ul=phul(a,b,['','','','number','']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New contestant','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','conkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xconfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
 	ffo.sf=rd;
 	
 	
@@ -191,7 +191,7 @@ var nocat=function(ki){
 	
 }
 var artbox=function(o){
-	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(M2),o),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,12,[artimg,ws]),eo={};
+	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(M2),o,[icon('user'),icon('music'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,10,[artimg,ws]),eo={};
 	eo.e=rd;
 	eo.u=ul;
 	
