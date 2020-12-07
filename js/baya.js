@@ -59,7 +59,7 @@ function amreg(v,c,n){
 	var t=(ll[v][c][n])?true:false;
 }
 function callstreetfix(){
-	if(!ffo.af)streetfix();
+	if(!ffo.sf)streetfix();
 	bringup(ffo.sf);
 	WM=WA[3];
 }
@@ -115,7 +115,7 @@ var streetfix=function(){
 	
 }
 var streetbox=function(o){
-	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(S3),o),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
+	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(S3),o,[icon('user'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
 	eo.e=rd;
 	eo.u=ul;
 	
