@@ -420,7 +420,7 @@ var votefix=function(){
 		if(e.innerHTML==V1[0]&&!Mng)inmusic();
 		if(e.innerHTML==V1[1]&&!Mng)instreet();
 		if(!Mng&&((e.id=='sackey'||fada(e).id=='sackey')||(e.id=='mackey'||fada(e).id=='mackey')||e.id=='newcatkey'||fada(e).id=='newcatkey'))newcat();
-		if(e.id=='addcat'||fada(e).id=='addcat')addcate();
+		if(e.id=='addcat'||fada(e).id=='addcat')cao.f1();
 	});
 	
 }
