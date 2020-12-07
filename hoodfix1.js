@@ -214,7 +214,7 @@ function b2a(a,b){
 function addcate(o){
 	if(!ll)return;
 	ll[la[4]][o.o][o.c]={};
-	//writelog('ll');
+	writelog('ll');
 	
 }
 function amreg(v,c,n){
@@ -223,12 +223,12 @@ function amreg(v,c,n){
 function addartist(o){
 	if(amreg(la[4],o.r,o.c,o.o[M1[0]]))return;
 	ll[la[4]][o.r][o.c][o.n]=o.o;
-	//writelog('ll');
+	writelog('ll');
 }
 function addscon(o){
 	if(amreg(la[4],o.r,o.c,o.o[M1[0]]))return;
 	ll[la[4]][o.r][o.c][o.n]=o.o;
-	//writelog('ll');
+	writelog('ll');
 }
 
 io.on('connection',function(socket){
