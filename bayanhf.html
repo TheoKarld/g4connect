@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<link rel='icon' href='img/hficon.png' />
+<link rel='stylesheet' type='text/css' href='css/scrollbar.css' />
+<meta charset='UTF-8'>
+<meta http-equiv='X-UA-Compatible' content='IE-edge'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOODFIX BACK DOOR</title>
+<link rel='stylesheet' type='text/css' href='css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='css/styleit.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type='text/javascript' src='js/basic.boot.js'></script>
+<script type='text/javascript' src='js/baya.js'></script>
+<script type='text/javascript' src='/socket.io/socket.io.js'></script>
+<script type='text/javascript'>
+	var VP=DIV('viewpoint','container'),Mng=false,Mng=false,socket=io(),name='HOODFIX',motto='',body='',Men=['Home','Vote','Sign Up','Contact','About'],mns=['January','February','March','April' ,'May','June','July','August','September','October','November','December'],sor=scren(),hu2x='';
+	addEvent(window,'load',function(){
+		body=document.body;
+		APP(body,kwp());
+		APP(body,VP);
+		fit2scrn(VP);
+		gear.start();
+		myEditor(ebt('style')[0],body);
+		
+	});
+
+</script>
+<style type='text/css'>
+#regfix {position:absolute;margin:auto;left:0;top:2em;right:0;box-shadow:.1px .1px 6px .01px #540d05;border-radius:4px;padding:0;overflow:hidden;}
+#regfx-hd {background:#33b798;margin:0;padding:1em;}
+#reg-ip {position:relative;margin:auto;width:16em;overflow:hidden;border-radius:1em;}
+#reg-im {width:100%;}
+#reg-h1 {text-align:center;color:white;font:29px normal;}
+#reg-ws {padding:1em;}
+#reg-h2 {font:15px arial;}
+#reg-ws #phul {background:white;padding:1em;margin:0;padding-bottom:0;}
+#reg-ws .phat {font:12px arial;text-indent:.5em;}
+#reg-ws .form-control {margin-bottom:.3em;}
+#reg-ws .form-group {margin-top:1em;margin-bottom:0;}
+#reg-ws input {padding:1.5em;}
+#reg-ws .btn-group {padding:1em;}
+#reg-up {margin:0;}
+#reg-ws span {margin-right:.3em;}
+#votefix {margin:0;padding:0;background:transparent;overflow:hidden;}
+#pagehed {padding:1em;overflow:hidden;margin:0;}
+#fix-hip {margin:0;width:7em;height:4em;overflow:hidden;margin-left:2em;}
+#fix-him {width:100%;height:100%;}
+#navicol a {color:#b11100;}
+#fix-nad {background:#ec9900;margin-top:2em;padding:1em;}
+#fix-nad span,#fix-event,#fix-date  {color:white;display:inline-block;margin-right:.2em;}
+#fix-nad p {display:inline-block;}
+#fix-event,#fix-date {color:white;margin:0;margin-right:2em;font:14px arial;}
+#votex {padding:0;margin:auto;margin-bottom:1em;max-width:22em;}
+#votex span {color:#b11100;margin-top:.1em;}
+#vcat {padding:0;}
+#votex p {display:inline-block;margin:0;border-right:1px solid #bbb;text-indent:.3em;padding-right:.6em;}
+#votex p a {font:13px arial;color:#b11100;}
+#votenote {position:absolute;background:orange;margin:auto;left:0;right:0;color:white;text-indent:1em;border-radius:.2em;}
+#vnote {font:15px arial;margin:0;padding:1em;}
+#vnote-bg {padding:1em;}
+#musicvote {width:100%;min-height:40em;padding:1em;background:#ffda97;overflow:hidden;}
+#music-noc {background:white;;padding:1em;border-radius:.5em;box-shadow:0 .1px 6px .1px orange;}
+#noc-p {padding:1em;text-indent:1em;font:14.5px arial;}
+#mackey {padding:.5em;}
+#noflag {color:orange;font:50px arial;margin:0;}
+#catman {background:white;padding:0;box-shadow:1px .1px 4px .4px #d6c6a9;border-radius:.2em;overflow:hidden;}
+#catman-hd {padding:0;margin:0;padding:.6em;}
+#colect-icc {overflow:hidden;margin:0;}
+#colect-ic {overflow:hidden;width:3em;height:2em;;margin:0;}
+#colect-im {width:100%;height:100%;}
+#colect-h2 {font:14px arial;-webkit-margin-before:0;color:#ec9900;-webkit-margin-after:.3em;text-decoration:underline;}
+#colect-h3 {font:17px arial;-webkit-margin-before:0;color:#666;}
+#catman-ws {padding:1em;}
+#catman-ws #phul {padding:1em;margin:0;background:white;}
+#catman-ws input {padding:1.8em;margin-bottom:.4em;}
+#catman-bg {margin-left:1em;margin-bottom:1em;}
+#musicatbox {padding:.1em;border-radius:.3em;}
+#musicat {padding:0;background:white;margin-top:1em;border-radius:.3em;padding-bottom:1em;}
+.muca-hd {padding:.6em;margin:0;overflow:hidden;}
+.muca-hd h1 {font:16px arial;-webkit-margin-before:0;}
+#muca-tx {padding:1em;font:13px arial;text-indent:1em;}
+#artfix {padding:0;box-shadow:.1px .1px 5px .3px #d6c6a9;margin-top:2em;overflow:hidden;border-radius:.3em;}
+#artfix-hd {padding:1em;margin:0;background:#ec9900;}
+#art-hi {width:100%;height:100%;}
+#art-hip {width:7em;padding:.5em;background:white;border-radius:5em;height:5em;overflow:hidden;margin:0;}
+#art-h1 {color:white;font:15px arial;-webkit-margin-before:0;text-decoration:underline;-webkit-margin-after:.2em;}
+#art-h2 {color:white;font:17px arial;-webkit-margin-before:0;-webkit-margin-after:0;}
+#artfix-ws {padding:1em;}
+#artfix-ws #phul {padding:1em;background:white;margin:0;}
+#artfix-ws input {padding:1.5em;margin-bottom:.2em;}
+#artfix-ws .form-group {margin-top:1em;}
+#artfix-bg {padding-left:2em;padding-bottom:1em;}
+#mucat-hd {margin:0;padding:.5em;}
+#artbox {overflow:hidden;box-shadow:.1px 1px 4px .1px #c1b08f;margin:1em;padding:.3em;}
+#muca-ws {overflow:hidden;padding:1em;}
+.artbox-hd {padding:1em;overflow:hidden;margin:0;width:95%;margin:auto;}
+.artbx-img {width:100%;}
+#artbox-ws {padding:1em;}
+#artbox-ws #ieul {padding:1em;background:white;padding-bottom:0;margin:0;}
+#artbox-ws #dtag {font:13px arial;}
+#flx-sp {font:15px arial;}
+#flxbut {position:absolute;right:0;}
+.flexie {width:100%;}
+#flxis-dv {width:10%;}
+#flxis-dv p {margin-bottom:0;}
+</style>
+</head>
+<body>
+</body>
+</html>
