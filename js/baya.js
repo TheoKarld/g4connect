@@ -66,7 +66,7 @@ function callstreetfix(){
 
 
 var streetfix=function(){
-	var a=S3,b=['insert contestant name, real or nick name.','contestant\'s residential area','contestant\'s facebook username','contestant\'s whatsapp phone number.','contestant\'s instagram handle'],ul=phul(a,b,['','','','number','']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New contestant','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','conkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xconfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
+	var a=S3,b=['insert contestant name, real or nick name.','contestant\'s residential area','contestant\'s facebook username','contestant\'s whatsapp number.','contestant\'s instagram handle'],ul=phul(a,b,['','','','number','']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New contestant','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','conkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xconfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
 	ffo.sf=rd;
 	
 	
@@ -203,7 +203,7 @@ var artbox=function(o){
 	return eo;
 }
 var artfix=function(){
-	var a=M2,b=['insert artist name, real or stage name.','insert name of linked song','artist\'s residential area','artist\'s facebook username','artist\'s whatsapp phone number.'],ul=phul(a,b,['','','','','number']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New Artist','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','artkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xartfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
+	var a=M2,b=['insert artist name, real or stage name.','insert name of linked song','artist\'s residential area','artist\'s facebook username','artist\'s whatsapp number.','artist\'s instagram handle.'],ul=phul(a,b,['','','','','number']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New Artist','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','artkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xartfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
 	ffo.af=rd;
 	
 	
