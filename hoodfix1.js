@@ -1,4 +1,4 @@
-var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'];
+var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com";
 
 
 
@@ -24,6 +24,7 @@ var date=function(r){
 	if(r=='h')v=o.getHours();
 	if(r=='mn')v=o.getMinutes();
 	if(r=='s')v=o.getSeconds();
+	if(r=='ms')v=o.getMilliseconds();
 	
 	return v;
 }
@@ -162,7 +163,7 @@ function callog(){
 	read(ADM,logop);
 	function logop(a){
 		for(var i in a){
-			if(a[i].fid==ids[0])ll=a[i];
+			if(a[i].fid==ids[0]){ll=a[i];if(!ll[la[6]]){ll[la[6]]={};writelog('ll');}}
 			
 		}
 	}
@@ -230,6 +231,51 @@ function addscon(o){
 	ll[la[4]][o.r][o.c][o.n]=o.o;
 	writelog('ll');
 }
+function sendemail(o,rf){
+	kwport.sendMail(o,function(er,inf){
+		if(er){if(rf)rf(false);clg(er);}else{rf(true);clg('Email sent successfully..');}
+	});
+	
+}
+function newuser(o,rf){
+	if(!ll)return;
+	var id=makeid(o.o),tx='Hi there, welcome to '+ll[la[1]]+', your username is "'+o.o[F3[0]]+'", your userID is "'+id+'". Thank you for signing up with '+ll[la[1]]+'. We hope you participate and benefit from our upcoming online market system.',eo=emto(hem,o.o[F3[1]],'Login Credentials',tx,'');
+	o.o.id=id;
+	sendemail(eo,conti);
+	function conti(r){
+		if(r){
+			ll[la[6]][id]=o.o;
+			writelog('ll');
+		}
+		rf(r);
+	}
+}
+function makeid(o){
+	var i1=date('ms'),nm=revar(breaktxt(o[F3[0]].split(' ')[0])[0]),ct=breaktxt(o[F3[2]].toString())[1].slice(0,2),c=ocn(ll[la[6]])+1,id=nm+c+ct+i1;
+	return id;
+	
+}
+function breaktxt(t){
+	var b=ocn(t)/2,a=isfloat(b),a=[],d;
+	d=(a)?parseInt(b)+1:parseInt(b);
+	a.push(t.slice(0,d));a.push(t.slice(d,ocn(t)));
+	return a;
+}
+function isfloat(n){
+	var a=n.toString();
+	if(a.indexOf('.')>-1)return true;
+	return false;
+}
+function revar(v){
+	var a=(typeof v=='number')?v.toString():v,b=a.split(''),c=[],r='';
+	for(var i=ocn(b)-1;i>-1;i--)c.push(b[i]);
+	for(var i in c)r=r.toString()+c[i];
+	return r;
+}
+
+
+
+
 
 io.on('connection',function(socket){
 	
@@ -269,5 +315,16 @@ io.on('connection',function(socket){
 		o.co=ll[la[4]];
 		socket.emit('sconadd',o);
 	});
+	socket.on('newuser',function(o){
+		if(!ll)return;
+		newuser(o,gobck);
+		function gobck(r){
+			o.co=ll[la[6]];
+			o.r=r;
+			socket.emit('usernew',o);
+		}
+		
+	});
+	
 });
 

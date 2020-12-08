@@ -1,4 +1,4 @@
-var A1=['lg','md','sm','xs'],ICN={'film':'glyphicon glyphicon-film','tele':'glyphicon glyphicon-phone-alt','trash':'glyphicon glyphicon-trash',settings:'glyphicon glyphicon-cog',wrench:'glyphicon glyphicon-wrench',tright:'glyphicon glyphicon-triangle-right',voption:'glyphicon glyphicon-option-horizontal',hoption:'glyphicon glyphicon-option-horizontal',off:'glyphicon glyphicon-off',save:'glyphicon glyphicon-save',pencil:'glyphicon glyphicon-pencil',tower:'glyphicon glyphicon-tower',ok:'glyphicon glyphicon-ok',cok:'glyphicon glyphicon-ok-circle',plus:'glyphicon glyphicon-plus',user:'glyphicon glyphicon-user',folder:'glyphicon glyphicon-folder-close',home:'glyphicon glyphicon-home',remove:'glyphicon glyphicon-remove',edit:'glyphicon glyphicon-edit',ques:'glyphicon glyphicon-question-sign',check:'glyphicon glyphicon-check',handup:'glyphicon glyphicon-hand-up',thumbsup:'glyphicon glyphicon-thumbs-up',cloudupload:'glyphicon glyphicon-cloud-upload',tent:'glyphicon glyphicon-tent',leaf:'glyphicon glyphicon-leaf',refresh:'glyphicon glyphicon-refresh',record:'glyphicon glyphicon-record',copy:'glyphicon glyphicon-copy',paste:'glyphicon glyphicon-paste',screenshot:'glyphicon glyphicon-screenshot',asterisk:'glyphicon glyphicon-asterisk',cloud:'glyphicon glyphicon-cloud',book:'glyphicon glyphicon-book',infosign:'glyphicon glyphicon-info-sign',calender:'glyphicon glyphicon-calender',comment:'glyphicon glyphicon-comment',stats:'glyphicon glyphicon-stats',alerti:'glyphicon glyphicon-alert',savefile:'glyphicon glyphicon-save-file',music:'glyphicon glyphicon-music'},ftx='Click on the pencil icon to modify any company information, any change made can be undone by simply clicking on the pencil again. Please not you can\'t exit without saving all changes.',upa={action:'fileupload',method:'post',enctype:'multipart/form-data',finp:{type:'file',name:'filetoupload'}};
+var A1=['lg','md','sm','xs'],ICN={'film':'glyphicon glyphicon-film','tele':'glyphicon glyphicon-phone-alt','trash':'glyphicon glyphicon-trash',settings:'glyphicon glyphicon-cog',wrench:'glyphicon glyphicon-wrench',tright:'glyphicon glyphicon-triangle-right',voption:'glyphicon glyphicon-option-horizontal',hoption:'glyphicon glyphicon-option-horizontal',off:'glyphicon glyphicon-off',save:'glyphicon glyphicon-save',pencil:'glyphicon glyphicon-pencil',tower:'glyphicon glyphicon-tower',ok:'glyphicon glyphicon-ok',cok:'glyphicon glyphicon-ok-circle',plus:'glyphicon glyphicon-plus',user:'glyphicon glyphicon-user',folder:'glyphicon glyphicon-folder-close',home:'glyphicon glyphicon-home',remove:'glyphicon glyphicon-remove',edit:'glyphicon glyphicon-edit',ques:'glyphicon glyphicon-question-sign',check:'glyphicon glyphicon-check',handup:'glyphicon glyphicon-hand-up',thumbsup:'glyphicon glyphicon-thumbs-up',cloudupload:'glyphicon glyphicon-cloud-upload',tent:'glyphicon glyphicon-tent',leaf:'glyphicon glyphicon-leaf',refresh:'glyphicon glyphicon-refresh',record:'glyphicon glyphicon-record',copy:'glyphicon glyphicon-copy',paste:'glyphicon glyphicon-paste',screenshot:'glyphicon glyphicon-screenshot',asterisk:'glyphicon glyphicon-asterisk',cloud:'glyphicon glyphicon-cloud',book:'glyphicon glyphicon-book',infosign:'glyphicon glyphicon-info-sign',calender:'glyphicon glyphicon-calender',comment:'glyphicon glyphicon-comment',stats:'glyphicon glyphicon-stats',alerti:'glyphicon glyphicon-alert',savefile:'glyphicon glyphicon-save-file',music:'glyphicon glyphicon-music',cplay:'glyphicon glyphicon-play-circle',play:'glyphicon glyphicon-play',download:'glyphicon glyphicon-download-alt',mapmark:'glyphicon glyphicon-map-marker',oksign:'glyphicon glyphicon-ok-sign',link:'glyphicon glyphicon-link'},ftx='Click on the pencil icon to modify any company information, any change made can be undone by simply clicking on the pencil again. Please not you can\'t exit without saving all changes.',upa={action:'fileupload',method:'post',enctype:'multipart/form-data',finp:{type:'file',name:'filetoupload'}};
 
 //ethnocentric
 
@@ -842,25 +842,13 @@ var myul=function(id,ar,ic){
 	}
 	return eo;
 }
-var ieul=function(a,b){
-	var rd=jum('ieul'),eo={},c;
-	eo.e=rd;
-	eo.o={};
-	for(var k in a){
-		c=flexie(k,{t:k,v:b[k]},{f:'pencil',s:'ok'},{i:{type:'text'},c:'btn-group btn-group-sm'});
-		APP(rd,c.e);
-		eo.o[k]=c;
-	}
-	
-	return eo;
-}
 var ieul=function(a,b,g){
 	var rd=jum('ieul'),eo={},c,h=cta(a),w;
 	eo.e=rd;
 	eo.o={};
 	for(var k in h){
 		w=(g&&g[k])?[g[k]]:h[k];
-		c=flexie(h[k],{t:w,v:b[h[k]]},{f:'pencil',s:'ok'},{i:{type:'text'},c:'btn-group btn-group-sm'});
+		c=flexie(h[k],{t:w,v:b[h[k]]},{f:'edit',s:'ok'},{i:{type:'text'},c:'btn-group btn-group-sm'});
 		APP(rd,c.e);
 		eo.o[h[k]]=c;
 	}
