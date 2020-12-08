@@ -880,9 +880,12 @@ var sieul=function(a,b,g){
 	
 	return eo;
 }
-var sanc=function(c,f,w){
-	var a1=['fab fa-lg fa-facebook-f','fab fa-md fa-facebook-f','fab fa-sm fa-facebook-f','fab fa-xs fa-facebook-f'],a2=['fab fa-lg fa-whatsapp','fab fa-md fa-whatsapp','fab fa-sm fa-whatsapp','fab fa-xs fa-whatsapp'],a3=['fab fa-lg fa-instagram','fab fa-md fa-instagram','fab fa-sm fa-instagram','fab fa-xs fa-instagram'],b1=['fb-ic mr-3','whatsapp-ic','ins-ic mr-3'],a4=[a1,a2,a3],rd=anc('',[$$$('i','',a4[f][w])],b1[c],'',{role:'button'});
+var sanc=function(f){
+	var a1=['fa fa-facebook','fa fa-whatsapp','fa fa-instagram'],b1=['btn btn-xs btn-social-icon btn-openid','btn btn-sm btn-social-icon btn-openid','btn btn-md btn-social-icon btn-openid'],rd=anc('',[span('','',a1[f])],b1[0],'',{role:'button'});
 	return rd;
 }
-
+var isanc=function(c,ic){
+	var b1=['btn btn-xs btn-social-icon btn-openid','btn btn-sm btn-social-icon btn-openid','btn btn-md btn-social-icon btn-openid'],rd=anc('',[ic],b1[c],'dtanc',{role:'button'});
+	return rd;
+}
 
