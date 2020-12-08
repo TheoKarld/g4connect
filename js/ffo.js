@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',ntxt='Sorry Dear, we are still getting things ready for the you esteem satisfaction....',WA=['not ready','vote','login'],WM='',XC='',itv='',WV='',sua={},suo={},cao={},muo={},mua={},AC='',VW='',F1=['username','userID'],F2=['insert your username','insert your userID'],F3=['username','email','phone number'],F4=['insert a username of your choice.','insert a valid email, through which you will recieve your userID','insert a valid phone number'],luo={},ME='',grl='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp';
+	var ll='',ffo={},M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',ntxt='Sorry Dear, we are still getting things ready for the you esteem satisfaction....',WA=['not ready','vote','login'],WM='',XC='',itv='',WV='',sua={},suo={},cao={},muo={},mua={},AC='',VW='',F1=['username','userID'],F2=['insert your username','insert your userID'],F3=['username','email','phone number'],F4=['insert a username of your choice.','insert a valid email, through which you will recieve your userID','insert a valid phone number'],luo={},ME='',grl='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp',suk=[['vote','play','download'],['play','download']],kus=[['vote','play','download'],['play','download']];
 	
 	
 	
@@ -76,12 +76,18 @@ function emdey(em){
 function uob(id){
 	return (ll[la[5]][id])?ll[la[5]][id]:false;
 }
+function idnvote(v,c,id){
+	var a=ll[la[3]][v][c],vt=false;
+	for(var i in a)if(a[i].votes[id]){vt=true;break;}
+	return vt;
+}
 
 
-
-
+var vpd=function(iv){
+	
+}
 var login=function(){
-	var h1=hea(1,'Sign in','log-h1'),hd=pah('login-pah',[par([img('img/hflogo.png','log-im')],'log-ip'),hea(1,ll[la[0]],'log-h2'),h1]),ul=phul(F1,F2,['text','password']),uh=par([ul.e,par([icon('ques'),span('you can always retrieve your userID from your email..')],'login-uhp')],'login-uh'),u2=phul(F3,F4,['text','email','number']),rh=par([u2.e,par([icon('ques'),span('you don\'t have an email? click on the create email button to begin..'),but([anc(grl,[icon('link'),span('create email')],'','gmanc',{target:'_blank'})],'button','gmailkey','btn btn-sm btn-danger')],'login-rhp')],'login-rh'),sk=butgroup('sm',[but([icon('ok'),span('sign up')],'button','signkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xsignup','btn btn-sm btn-danger')],'signup-bg'),lk=butgroup('sm',[but([icon('oksign'),span('sign in')],'button','loginkey','btn btn-sm btn-success'),but([icon('plus'),span('sign up')],'button','newsignkey','btn btn-sm btn-info')],'signin-bg'),ws=colbox('login-ws',12,12,12,12,[uh]),bb=colbox('login-bb',12,12,12,12,[lk]),rd=colbox('login-rd',5,5,11,11,[hd,ws,bb]),fr=true,val=true;
+	var h1=hea(1,'Sign in','log-h1'),hd=pah('login-pah',[par([img('img/hflogo.png','log-im')],'log-ip'),hea(1,ll[la[0]],'log-h2'),h1]),ul=phul(F1,F2,['text','password']),uh=par([ul.e,par([icon('ques'),span('you can always retrieve your userID from your email..')],'login-uhp')],'login-uh'),u2=phul(F3,F4,['text','email','number']),rh=par([u2.e,par([icon('ques'),span('you don\'t have an email? click on the create email button to begin..'),but([anc(grl,[icon('link'),span('create email')],'','gmanc',{target:'_blank'})],'button','gmailkey','btn btn-sm btn-danger')],'login-rhp')],'login-rh'),sk=butgroup('sm',[but([icon('ok'),span('sign up')],'button','signkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xsignup','btn btn-sm btn-danger')],'signup-bg'),lk=butgroup('sm',[but([icon('oksign'),span('sign in')],'button','loginkey','btn btn-sm btn-success'),but([icon('plus'),span('sign up')],'button','newsignkey','btn btn-sm btn-info')],'signin-bg'),ws=colbox('login-ws',12,12,12,12,[uh]),bb=colbox('login-bb',12,12,12,12,[lk]),rd=colbox('login-rd',5,5,11,11,[hd,ws,bb]),fr=true,val=true,wok=false;
 	luo.e=rd;
 	
 	
@@ -116,6 +122,7 @@ var login=function(){
 					myf3();
 					myf1();
 				}
+				wok=false;
 			});
 		}else{
 			var v1=cleaname(ul.o[F1[0]].value),v2=ul.o[F1[1]].value,v3,o1;
@@ -153,12 +160,13 @@ var login=function(){
 		if(!val)reck();
 		if(e.id=='newsignkey'||fada(e).id=='newsignkey')myf1();
 		if(e.id=='xsignup'||fada(e).id=='xsignup')myf1();
-		if(e.id=='signkey'||fada(e).id=='signkey')validate(u2.o,u2.a,myf2);
+		if(e.id=='signkey'||fada(e).id=='signkey'){if(wok){alert('please wait');}else{wok=true;validate(u2.o,u2.a,myf2);}}
 		if(e.id=='loginkey'||fada(e).id=='loginkey')validate(ul.o,ul.a,myf2);
 	});
 	
 }
-var artbox=function(o){
+var artbox=function(o,iv){
+	clg(o);
 	var il=(o.pic)?o.pic:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
 	eo.e=rd;
 	eo.u=ul;
@@ -171,7 +179,7 @@ var artbox=function(o){
 	return eo;
 }
 var musicat=function(c){
-	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx;
+	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx,idv=idnvote(v1[0],c,ME);
 	eo.e=rd;
 	eo.o={};
 	eo.f1=myf1;
@@ -179,7 +187,7 @@ var musicat=function(c){
 	function myf1(){
 		if(yaro(ws,0))ws.innerHTML='';
 		a=ll[la[3]][V1[0]][c];
-		for(var i in a){at=artbox(a[i]);APP(ws,at.e);eo.o[i]=at.o;}
+		for(var i in a){at=artbox(a[i],idv);APP(ws,at.e);eo.o[i]=at.o;}
 	}
 	
 	addEvent(rd,'click',function(e){
@@ -345,4 +353,4 @@ var votefix=function(){
 			init();
 		}
 	}
-})();	
+})();
