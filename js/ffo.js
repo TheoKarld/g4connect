@@ -179,7 +179,7 @@ var artbox=function(o,iv){
 	return eo;
 }
 var musicat=function(c){
-	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx,idv=idnvote(v1[0],c,ME);
+	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx,idv=idnvote(V1[0],c,ME);
 	eo.e=rd;
 	eo.o={};
 	eo.f1=myf1;
