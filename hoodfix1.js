@@ -272,6 +272,17 @@ function revar(v){
 	for(var i in c)r=r.toString()+c[i];
 	return r;
 }
+function rmvcate(o){
+	if(!ll)return;
+	delete ll[la[4]][o.o][o.c];
+	writelog('ll');
+	
+}
+function rmvcon(o){
+	if(!ll)return;
+	delete ll[la[4]][o.o][o.i][o.c];
+	writelog('ll');
+}
 
 
 
@@ -303,6 +314,12 @@ io.on('connection',function(socket){
 		o.co=ll[la[4]];
 		socket.emit('cateadd',o);
 	});
+	socket.on('rmvcate',function(o){
+		if(!ll)return;
+		rmvcate(o);
+		o.co=ll[la[4]];
+		socket.emit('catermv',o);
+	});
 	socket.on('addartist',function(o){
 		if(!ll)return;
 		addartist(o);
@@ -325,6 +342,11 @@ io.on('connection',function(socket){
 		}
 		
 	});
-	
+	socket.on('rmvcon',function(o){
+		if(!ll)return;
+		rmvcon(o);
+		o.co=ll[la[4]];
+		socket.emit('conrmv',o);
+	});
 });
 

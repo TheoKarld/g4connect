@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={};
+	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={},ctd={},cod={};
 	
 
 function init(){
@@ -55,16 +55,129 @@ function callartfix(){
 	bringup(ffo.af);
 	WM=WA[2];
 }
-function amreg(v,c,n){
-	var t=(ll[v][c][n])?true:false;
+function amreg(v,c,t,n){
+	clg(v+c+t+n);
+	var t=(ll[v][c][t][n])?true:false;
+	return t;
 }
 function callstreetfix(){
 	if(!ffo.sf)streetfix();
 	bringup(ffo.sf);
 	WM=WA[3];
 }
+function undey(u){
+	var a=ll[la[5]],d='';
+	for(var i in a){
+		if(a[i][F1[0]].toLowerCase()==u.toLowerCase()){d=i;break;}
+	}
+	return d;
+}
+function nmdey(n){
+	var a=ll[la[5]],d='';
+	for(var i in a)if(a[i][F1[2]]==n){d=i;break;}
+	clg(d);
+	return d;
+}
+function emdey(em){
+	var a=ll[la[5]],d='';
+	for(var i in a)if(a[i][F3[1]].toLowerCase()==em.toLowerCase()){d=i;break;}
+	
+	return d;
+}
 
 
+var condel=function(){
+	var a=['Name'],b=['insert contestant'],hd=pah('catman-hd',[par([par([img('img/hficon.png','colect-im')],'colect-ic'),hea(2,ll[la[0]],'colect-h2')],'colect-icc'),hea(2,'delete contestant','colect-h3')],'colect-hd'),ul=phul(a,b,['text']),ws=colbox('catman-ws',12,12,12,12,[ul.e]),rd=colbox('catman',4,4,12,12,[hd,ws,butgroup('md',[but([icon('plus'),span('add category')],'button','rmvcont','btn btn-md btn-success'),but([icon('remove'),span('cancel')],'button','xconrmv','btn btn-md btn-danger')],'catman-bg')]),val=true,vo='';
+	cod.e=rd;
+	cod.f1=myf1;
+	cod.f2=myf2;
+	cod.f3=myf3;
+	function myf1(){
+		validate(ul.o,ul.a,myf1b);
+	}
+	function myf1b(v){
+		val=v;
+		if(!v)return;
+		var k=myf3();
+		if(!amreg(la[3],V1[1],AC,k)){
+			redtxt(ul.a[a[0]],k+' does not exist');
+			val=false;
+			return
+		}
+		if(CF)CF(k);
+		
+	}
+	function myf2(){
+		clrvalu(ul.o);
+		resetip();
+		if(CR)CR();
+		CF='';CR='';
+	}
+	function myf3(){
+		if(!val)return false;
+		return cleaname(ul.o[a[0]].value);
+	}
+	function resetip(){
+		if(val)return;
+		resetkeys(ul.a,mrgar(a,b));
+		val=true;
+	}
+	
+	
+	addEvent(rd,'keydown',function(e){
+		e=e.code;
+		if(!val)resetip();
+		if(e=='Enter')validate(ul.o,ul.a,myf1b);
+		if(e=='Escape')myf2();
+	});
+	addEvent(rd,'click',function(e){
+		e=ee(e);
+		if(!val)resetip();
+		if(e.id=='xconrmv'||fada(e).id=='xconrmv')myf2();
+	});
+	
+}
+var catdel=function(){
+	var a=['Name'],b=['insert category name'],hd=pah('catman-hd',[par([par([img('img/hficon.png','colect-im')],'colect-ic'),hea(2,ll[la[0]],'colect-h2')],'colect-icc'),hea(2,'delete category','colect-h3')],'colect-hd'),ul=phul(a,b,['text']),ws=colbox('catman-ws',12,12,12,12,[ul.e]),rd=colbox('catman',4,4,12,12,[hd,ws,butgroup('md',[but([icon('plus'),span('add category')],'button','rmvcat','btn btn-md btn-success'),but([icon('remove'),span('cancel')],'button','xcatrmv','btn btn-md btn-danger')],'catman-bg')]),val=true,vo='';
+	ctd.e=rd;
+	ctd.f1=myf1;
+	ctd.f2=myf2;
+	ctd.f3=myf3;
+	function myf1(){
+		validate(ul.o,ul.a,myf1b);
+	}
+	function myf1b(v){
+		val=v;
+		if(CF)CF(myf3());
+	}
+	function myf2(){
+		clrvalu(ul.o);
+		resetip();
+		if(CR)CR();
+		CF='';CR='';
+	}
+	function myf3(){
+		if(!val)return false;
+		return cleaname(ul.o[a[0]].value);
+	}
+	function resetip(){
+		if(val)return;
+		resetkeys(ul.a,mrgar(a,b));
+		val=true;
+	}
+	
+	addEvent(rd,'keydown',function(e){
+		e=e.code;
+		if(!val)resetip();
+		if(e=='Enter')validate(ul.o,ul.a,myf1b);
+		if(e=='Escape')myf2();
+	});
+	addEvent(rd,'click',function(e){
+		e=ee(e);
+		if(!val)resetip();
+		if(e.id=='xcatrmv'||fada(e).id=='xcatrmv')myf2();
+	});
+}
 var streetfix=function(){
 	var a=S3,b=['insert contestant name, real or nick name.','contestant\'s residential area','contestant\'s facebook username','contestant\'s whatsapp number.','contestant\'s instagram handle'],ul=phul(a,b,['','','','number','']),hd=pah('artfix-hd',[par([img('img/hficon.png','art-hi')],'art-hip'),hea(1,ll[la[0]],'art-h1'),hea(2,'New contestant','art-h2')]),ws=colbox('artfix-ws',12,12,12,12,[ul.e]),rd=colbox('artfix',5,5,12,12,[hd,ws,butgroup('sm',[but([icon('cok'),span('submit')],'button','conkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xconfix','btn btn-sm btn-danger')],'artfix-bg')]),ma=mrgar(a,b),val=true;
 	ffo.sf=rd;
@@ -84,7 +197,7 @@ var streetfix=function(){
 		val=v;
 		if(!v)return;
 		var o1=fetchvalu(ul.o);
-		if(amreg(la[3],V1[0],o1[M2[0]])){redtxt(ul.a[M2[0]],o1[M2[0]]+' is already taken.');val=false;return;}
+		if(amreg(la[3],V1[0],AC,o1[M2[0]])){redtxt(ul.a[M2[0]],o1[M2[0]]+' is already taken.');val=false;return;}
 		o1[a4[0]]=VW;
 		o1[a4[1]]=AC;
 		o1[a4[2]]={};
@@ -147,6 +260,7 @@ var streetcat=function(c){
 		e=ee(e);
 		
 		if(e.id=='newcon'||fada(e).id=='newcon')myf2();
+		if(!Mng&&(e.id=='rmvcon'||fada(e).id=='rmvcon')){AC=c;ffo.rc();}
 	});
 	return eo;
 }
@@ -322,6 +436,7 @@ var catman=function(){
 	addEvent(rd,'click',function(e){
 		e=ee(e);
 		if(!val)resetip();
+		if(e.id=='xcatman'||fada(e)=='xcatman')myf2();
 	});
 }
 var musicvote=function(){
@@ -362,14 +477,12 @@ var pagehed=function(m){
 	return rd;
 }
 var votefix=function(){
-	musicvote();
-	streetvote();
-	catman();
-	hd=pagehed(Men[1]),vu=myul('votex',V1,['record','tower','user']),ws=colbox('vote-ws',12,12,12,12),vxt=colbox('votenote',3,3,10,10,[par(vtx,'vnote'),butgroup('md',[but('quick sign up','button','qskey','btn btn-md btn-success')],'vnote-bg')]),av=['vnote','catman','newartist'],rd=jum('votefix',[hd,vu.e,ws]),ww='',mv=muo.e,pv='';
+	musicvote();streetvote();catman();catdel();condel();
+	hd=pagehed(Men[1]),vu=myul('votex',V1,['record','tower','user']),ws=colbox('vote-ws',12,12,12,12),vxt=colbox('votenote',3,3,10,10,[par(vtx,'vnote'),butgroup('md',[but('quick sign up','button','qskey','btn btn-md btn-success')],'vnote-bg')]),av=['vnote','catman','newartist','rmvcat','rmvcon'],rd=jum('votefix',[hd,vu.e,ws]),ww='',mv=muo.e,pv='';
 	ffo.vte=rd;
 	fit2scrn(rd);
 	myf1(av[0]);
-	
+	ffo.rc=rmvcon
 	
 	function paintkey(c){
 		for(var i in vu.o){vu.o[i].style.background='';yaro(vu.o[i],1).style.color='';yaro(vu.o[i],0).style.color='';}
@@ -379,17 +492,31 @@ var votefix=function(){
 		
 	}
 	function myf1(h){
-		if(ww)X(ww);
+		if(ww)X(ww);	
+		if(h==av[4])ww=cod.e;
 		if(h==av[0])ww=vxt;
 		if(h==V1[0])ww=mv;
 		if(h==av[1])ww=cao.e;
 		if(h==V1[1])ww=suo.e;
+		if(h==av[3])ww=ctd.e;
 		APP(ws,ww);if(ina(V1,h))VW=h;
 		
 	}
 	function newcat(){
 		myf1(av[1]);
 		CF=addcate;
+		if(VW==V1[0])CR=inmusic;
+		if(VW==V1[1])CR=instreet;
+	}
+	function rmvcat(){
+		myf1(av[3]);
+		CF=rmvcate;
+		if(VW==V1[0])CR=inmusic;
+		if(VW==V1[1])CR=instreet;
+	}
+	function rmvcon(){
+		myf1(av[4]);
+		CF=rmvcont;
 		if(VW==V1[0])CR=inmusic;
 		if(VW==V1[1])CR=instreet;
 	}
@@ -414,6 +541,25 @@ var votefix=function(){
 			cao.f2();
 		});
 	}
+	function rmvcont(v){
+		if(!v)return;
+		var o2={o:VW,c:v,i:AC};
+		socket.emit('rmvcon',o2);
+		socket.on('conrmv',function(o3){
+			ll[la[3]]=o3.co;
+			cod.f2();
+		});
+	}
+	function rmvcate(v){
+		if(!v)return;
+		var o2={o:VW,c:v};
+		socket.emit('rmvcate',o2);
+		socket.on('catermv',function(o3){
+			ll[la[3]]=o3.co;
+			ctd.f2();
+		});
+	}
+	// remove contestant
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
@@ -421,6 +567,9 @@ var votefix=function(){
 		if(e.innerHTML==V1[1]&&!Mng)instreet();
 		if(!Mng&&((e.id=='sackey'||fada(e).id=='sackey')||(e.id=='mackey'||fada(e).id=='mackey')||e.id=='newcatkey'||fada(e).id=='newcatkey'))newcat();
 		if(e.id=='addcat'||fada(e).id=='addcat')cao.f1();
+		if(e.id=='rmvcat'||fada(e).id=='rmvcat')ctd.f1();
+		if(e.id=='rmvcont'||fada(e).id=='rmvcont')cod.f1();
+		if(!Mng&&(e.id=='delcatkey'||fada(e).id=='delcatkey'))rmvcat();
 	});
 	
 }
