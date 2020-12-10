@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={},ctd={},cod={};
+	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={},ctd={},cod={},suk=[['manual'],['handup']];
 	
 
 function init(){
@@ -86,6 +86,16 @@ function emdey(em){
 }
 
 
+
+var ihd=function(a,id){
+	var a1=a[0],a2=a[1],rd=butgroup(3,[],id),l,z;
+	addclass(rd,'ihd');
+	for(var i in a1){
+		l=but([par([icon(a2[i],a1[i])],'ihdico'),par(a1[i],'ihdsp')],'button','ihd-btn','btn btn-xs btn-link');
+		APP(rd,l);
+	}
+	return rd;
+}
 var condel=function(){
 	var a=['Name'],b=['insert contestant'],hd=pah('catman-hd',[par([par([img('img/hficon.png','colect-im')],'colect-ic'),hea(2,ll[la[0]],'colect-h2')],'colect-icc'),hea(2,'delete contestant','colect-h3')],'colect-hd'),ul=phul(a,b,['text']),ws=colbox('catman-ws',12,12,12,12,[ul.e]),rd=colbox('catman',4,4,12,12,[hd,ws,butgroup('md',[but([icon('plus'),span('add category')],'button','rmvcont','btn btn-md btn-success'),but([icon('remove'),span('cancel')],'button','xconrmv','btn btn-md btn-danger')],'catman-bg')]),val=true,vo='';
 	cod.e=rd;
@@ -228,7 +238,7 @@ var streetfix=function(){
 	
 }
 var streetbox=function(o){
-	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(S3),o,[icon('user'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
+	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(S3),o,[icon('user'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws,ihd(suk,o[M1[0]])]),eo={};
 	eo.e=rd;
 	eo.u=ul;
 	
@@ -305,7 +315,7 @@ var nocat=function(ki){
 	
 }
 var artbox=function(o){
-	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(M2),o,[icon('user'),icon('music'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,10,[artimg,ws]),eo={};
+	var il=(o.pic)?o.pic:'img/user.jpg',ul=ieul(cto(M2),o,[icon('user'),icon('music'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,10,[artimg,ws,ihd(suk,o[M1[0]])]),eo={};
 	eo.e=rd;
 	eo.u=ul;
 	
@@ -335,7 +345,7 @@ var artfix=function(){
 		val=v;
 		if(!v)return;
 		var o1=fetchvalu(ul.o);
-		if(amreg(la[3],V1[0],o1[M2[0]])){redtxt(ul.a[M2[0]],o1[M2[0]]+' is already taken.');val=false;return;}
+		if(amreg(la[3],V1[0],AC,o1[M2[0]])){redtxt(ul.a[M2[0]],o1[M2[0]]+' is already taken.');val=false;return;}
 		o1[a4[0]]=VW;
 		o1[a4[1]]=AC;
 		o1[a4[2]]={};
