@@ -94,7 +94,7 @@ var ihd=function(a,id){
 	var a1=a[0],a2=a[1],rd=butgroup(3,[],id),l,z;
 	addclass(rd,'ihd');
 	for(var i in a1){
-		l=but([par([icon(a2[i])],'ihdico'),par(a1[i],'ihdsp')],'button','ihd-btn','btn btn-xs btn-link');
+		l=but([par([icon(a2[i],a1[i])],'ihdico'),par(a1[i],'ihdsp')],'button','ihd-btn','btn btn-xs btn-link');
 		APP(rd,l);
 	}
 	return rd;
@@ -204,7 +204,7 @@ var artbox=function(o,iv,c){
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
-		if(e.id=='vote'||fada(e).id=='vote')voteme();
+		if(e.id=='vote')voteme();
 		
 	});
 	return eo;
@@ -276,7 +276,7 @@ var streetbox=function(o,c,iv){
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
-		if(e.id=='vote'||fada(e).id=='vote')voteme();
+		if(e.id=='vote')voteme();
 		 
 	});
 	return eo;

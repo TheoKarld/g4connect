@@ -561,8 +561,8 @@ var slist=function(n){
 	}
 	return a;
 }
-var icon=function(n,at){
-	var ic=ICN,p=span('','',ic[n]);attme(p,at);p.style.padding='.2em';return p;
+var icon=function(n,id,at){
+	var ic=ICN,p=span('',id,ic[n]);attme(p,at);p.style.padding='.2em';return p;
 }
 var iconanc=function(r,b,t,id,c,i){
 	var f=(b)?span(t):icon(i),s=(b)?icon(i):span(t),rd=anc(r,[f,s],c,id);
