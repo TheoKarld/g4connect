@@ -281,7 +281,10 @@ function hookupload(o){
 function yaro(p,c){
 	return (p.childNodes)?p.childNodes[c]:false;
 }
-
+function parse(t,n){
+	if(typeof n=='number')return n;
+	if(t=='i')return parseInt(n);
+}
 
 
 

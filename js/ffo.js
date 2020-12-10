@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',ntxt='Sorry Dear, we are still getting things ready for the you esteem satisfaction....',WA=['not ready','vote','login'],WM='',XC='',itv='',WV='',sua={},suo={},cao={},muo={},mua={},AC='',VW='',F1=['username','userID'],F2=['insert your username','insert your userID'],F3=['username','email','phone number'],F4=['insert a username of your choice.','insert a valid email, through which you will recieve your userID','insert a valid phone number'],luo={},ME='',grl='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp',suk=[['vote','play','download'],['play','download']],kus=[['vote','play','download'],['play','download']];
+	var ll='',ffo={},M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users','uncleared'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',ntxt='Sorry Dear, we are still getting things ready for the you esteem satisfaction....',WA=['not ready','vote','login'],WM='',XC='',itv='',WV='',sua={},suo={},cao={},muo={},mua={},AC='',VW='',F1=['username','userID'],F2=['insert your username','insert your userID'],F3=['username','email','phone number'],F4=['insert a username of your choice.','insert a valid email, through which you will recieve your userID','insert a valid phone number'],luo={},ME='',grl='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp',suk=[['vote','play','download'],['play','download']],kus=[['handup','play','download'],['play','download']];
 	
 	
 	
@@ -55,21 +55,21 @@ function callogin(){
 	
 }
 function undey(u){
-	var a=ll[la[5]],d='';
-	for(var i in a){
-		if(a[i][F1[0]].toLowerCase()==u.toLowerCase()){d=i;break;}
-	}
+	var a=ll[la[5]],d='',b=ll[la[6]];
+	for(var i in a)if(a[i][F3[0]].toLowerCase()==u.toLowerCase()){d=i;break;}
+	if(!d)for(var i in b)if(b[i][F3[0]].toLowerCase()==u.toLowerCase()){d=i;break;}
 	return d;
 }
 function nmdey(n){
-	var a=ll[la[5]],d='';
-	for(var i in a)if(a[i][F1[2]]==n){d=i;break;}
-	clg(d);
+	var a=ll[la[5]],d='',b=ll[la[6]];
+	for(var i in a)if(a[i][F3[2]].toString()==n.toString()){d=i;break;}
+	if(!d)for(var i in b)if(b[i][F3[2]].toString()==n.toString()){d=i;break;}
 	return d;
 }
 function emdey(em){
-	var a=ll[la[5]],d='';
+	var a=ll[la[5]],b=ll[la[6]],d='';
 	for(var i in a)if(a[i][F3[1]].toLowerCase()==em.toLowerCase()){d=i;break;}
+	if(!d)for(var i in b)if(b[i][F3[1]].toLowerCase()==em.toLowerCase()){d=i;break;}
 	
 	return d;
 }
@@ -81,15 +81,31 @@ function idnvote(v,c,id){
 	for(var i in a)if(a[i].votes[id]){vt=true;break;}
 	return vt;
 }
+function chk4clr(o){
+	if(ll[la[6]][o.i]){
+		ll[la[5]][o.i]=ll[la[6]][o.i];
+		delete ll[la[6]][o.i];
+	}
+}
 
 
-var vpd=function(iv){
-	
+
+var ihd=function(a,id){
+	var a1=a[0],a2=a[1],rd=butgroup(3,[],id),l,z;
+	addclass(rd,'ihd');
+	for(var i in a1){
+		l=but([par([icon(a2[i])],'ihdico'),par(a1[i],'ihdsp')],'button','ihd-btn','btn btn-xs btn-link');
+		APP(rd,l);
+	}
+	return rd;
+}
+var vpd=function(iv,id){
+	var a=(iv)?[suk[1],kus[1]]:[suk[0],kus[0]],k=ihd(a,id);
+	return k;
 }
 var login=function(){
 	var h1=hea(1,'Sign in','log-h1'),hd=pah('login-pah',[par([img('img/hflogo.png','log-im')],'log-ip'),hea(1,ll[la[0]],'log-h2'),h1]),ul=phul(F1,F2,['text','password']),uh=par([ul.e,par([icon('ques'),span('you can always retrieve your userID from your email..')],'login-uhp')],'login-uh'),u2=phul(F3,F4,['text','email','number']),rh=par([u2.e,par([icon('ques'),span('you don\'t have an email? click on the create email button to begin..'),but([anc(grl,[icon('link'),span('create email')],'','gmanc',{target:'_blank'})],'button','gmailkey','btn btn-sm btn-danger')],'login-rhp')],'login-rh'),sk=butgroup('sm',[but([icon('ok'),span('sign up')],'button','signkey','btn btn-sm btn-primary'),but([icon('remove'),span('cancel')],'button','xsignup','btn btn-sm btn-danger')],'signup-bg'),lk=butgroup('sm',[but([icon('oksign'),span('sign in')],'button','loginkey','btn btn-sm btn-success'),but([icon('plus'),span('sign up')],'button','newsignkey','btn btn-sm btn-info')],'signin-bg'),ws=colbox('login-ws',12,12,12,12,[uh]),bb=colbox('login-bb',12,12,12,12,[lk]),rd=colbox('login-rd',5,5,11,11,[hd,ws,bb]),fr=true,val=true,wok=false;
 	luo.e=rd;
-	
 	
 	function myf1(){
 		if(fr){
@@ -114,6 +130,8 @@ var login=function(){
 			if(nmdey(v3)){redtxt(u2.a[F3[2]],F3[2]+' is already taken.');val=false;return;}
 			o1={o:fetchvalu(u2.o)};
 			socket.emit('newuser',o1);
+			X(bb);
+			alert('please wait a bit as your credentials is generating..')
 			socket.on('usernew',function(o){
 				if(!o.r){
 					redtxt(u2.a[F3[1]],v2+' does not exist.');val=false;
@@ -121,16 +139,23 @@ var login=function(){
 					ll[la[5]]=o.co;
 					myf3();
 					myf1();
+					APP(rd,bb);
 				}
 				wok=false;
+				alert('check your gmail inbox to retrieve your userID '+v1+'. if you did not recieve your login credentials then you enter an inactive email. Please try signing up with an active email');
 			});
 		}else{
-			var v1=cleaname(ul.o[F1[0]].value),v2=ul.o[F1[1]].value,v3,o1;
+			var v1=cleaname(ul.o[F1[0]].value),v2=ul.o[F1[1]].value,v3,v4,o1;
 			if(!undey(v1)){redtxt(ul.a[F1[0]],'invalid username');val=false;return;}
 			v3=uob(v2);
-			if(!v3||v3[F3[0]]!=v1){redtxt(ul.a[F1[1]],'invalid userID');val=false;return;}
+			v4=(ll[la[6]][v2])?true:false;
+			if(!v3||v3[F3[0]]!=v1){if(!v4){redtxt(ul.a[F1[1]],'invalid userID');val=false;return;}}
 			ME=v2;
-			callvote()
+			callvote();
+			if(v4){
+				chk4clr({i:v2});
+				socket.emit('chk4clr',{i:v2});
+			}
 		}
 	}
 	function myf3(){
@@ -165,29 +190,36 @@ var login=function(){
 	});
 	
 }
-var artbox=function(o,iv){
-	clg(o);
-	var il=(o.pic)?o.pic:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
+var artbox=function(o,iv,c){
+	var il=(o.pic)?o.pic:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws,vpd(iv,c)]),eo={};
 	eo.e=rd;
 	eo.u=ul;
+	function voteme(){
+		ll[la[3]][V1[0]][c][o[M1[0]]].votes[ME]=true;
+		socket.emit('voteme',{w:V1[0],ct:c,a:o[M1[0]],vt:ME});
+		socket.on('mevote',function(o3){
+			mua.o[c].f1();
+		});
+	}
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
-		//here
-		 
+		if(e.id=='vote'||fada(e).id=='vote')voteme();
+		
 	});
 	return eo;
 }
 var musicat=function(c){
-	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx,idv=idnvote(V1[0],c,ME);
+	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx,idv;
 	eo.e=rd;
 	eo.o={};
 	eo.f1=myf1;
 	myf1();
 	function myf1(){
+		idv=idnvote(V1[0],c,ME);
 		if(yaro(ws,0))ws.innerHTML='';
 		a=ll[la[3]][V1[0]][c];
-		for(var i in a){at=artbox(a[i],idv);APP(ws,at.e);eo.o[i]=at.o;}
+		for(var i in a){at=artbox(a[i],idv,c);APP(ws,at.e);eo.o[i]=at.o;}
 	}
 	
 	addEvent(rd,'click',function(e){
@@ -228,28 +260,38 @@ var musicvote=function(){
 	});
 	
 }
-var streetbox=function(o){
+var streetbox=function(o,c,iv){
 	var il=(o.pic)?o.pic:'img/user.jpg',ul=sieul(cto(S3),o,[icon('user'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
 	eo.e=rd;
 	eo.u=ul;
+	if(!iv)APP(rd,ihd([['vote'],['handup']],c));
+	
+	function voteme(){		
+		ll[la[3]][V1[1]][c][o[M1[0]]].votes[ME]=true;
+		socket.emit('voteme',{w:V1[1],ct:c,a:o[M1[0]],vt:ME});
+		socket.on('mevote',function(o3){
+			sua.o[c].f1();
+		});
+	}
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
-		//here
+		if(e.id=='vote'||fada(e).id=='vote')voteme();
 		 
 	});
 	return eo;
 }
 var streetcat=function(c){
-	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx;
+	var a,hd=pah(c,[hea(1,c,c,'muca-h1')],'muca-hd'),ws=colbox('muca-ws',12,12,12,12),rd=colbox('musicat',12,12,12,12,[hd,ws]),eo={},at,tx,idv;
 	eo.e=rd;
 	eo.o={};
 	eo.f1=myf1;
 	myf1();
 	function myf1(){
+		idv=idnvote(V1[1],c,ME);
 		if(yaro(ws,0))ws.innerHTML='';
 		a=ll[la[3]][V1[1]][c];
-		for(var i in a){at=streetbox(a[i]);APP(ws,at.e);eo.o[i]=at.o;}
+		for(var i in a){at=streetbox(a[i],c,idv);APP(ws,at.e);eo.o[i]=at.o;}
 	}
 	
 	addEvent(rd,'click',function(e){

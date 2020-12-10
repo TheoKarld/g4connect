@@ -1,4 +1,4 @@
-var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com";
+var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users','uncleared'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com";
 
 
 
@@ -163,7 +163,7 @@ function callog(){
 	read(ADM,logop);
 	function logop(a){
 		for(var i in a){
-			if(a[i].fid==ids[0]){ll=a[i];if(!ll[la[6]]){ll[la[6]]={};writelog('ll');}}
+			if(a[i].fid==ids[0]){ll=a[i];}
 			
 		}
 	}
@@ -244,7 +244,7 @@ function newuser(o,rf){
 	sendemail(eo,conti);
 	function conti(r){
 		if(r){
-			ll[la[6]][id]=o.o;
+			ll[la[7]][id]=o.o;
 			writelog('ll');
 		}
 		rf(r);
@@ -283,9 +283,24 @@ function rmvcon(o){
 	delete ll[la[4]][o.o][o.i][o.c];
 	writelog('ll');
 }
-
-
-
+function voteme(o){
+	ll[la[4]][o.w][o.ct][o.a].votes[o.vt]=true;
+	writelog('ll');
+}
+function chk4clr(o){
+	if(ll[la[7]][o.i]){
+		ll[la[6]][o.i]=ll[la[7]][o.i];
+		delete ll[la[7]][o.i];
+		writelog('ll');
+	}
+}
+function removeusers(a){
+	var w=''
+	for(var i in a){
+		if(ll[la[6]][a[i]]){delete ll[la[6]][a[i]];if(!w)w=true;}
+	}
+	if(w)writelog('ll');
+}
 
 
 io.on('connection',function(socket){
@@ -347,6 +362,15 @@ io.on('connection',function(socket){
 		rmvcon(o);
 		o.co=ll[la[4]];
 		socket.emit('conrmv',o);
+	});
+	socket.on('voteme',function(o){
+		if(!ll)return;
+		voteme(o);
+		socket.emit('mevote');
+	});
+	socket.on('chk4clr',function(o){
+		if(!ll)return;
+		chk4clr(o);
 	});
 });
 

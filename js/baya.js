@@ -197,7 +197,7 @@ var streetfix=function(){
 		val=v;
 		if(!v)return;
 		var o1=fetchvalu(ul.o);
-		if(amreg(la[3],V1[0],AC,o1[M2[0]])){redtxt(ul.a[M2[0]],o1[M2[0]]+' is already taken.');val=false;return;}
+		if(amreg(la[3],V1[1],AC,o1[M2[0]])){redtxt(ul.a[M2[0]],o1[M2[0]]+' is already taken.');val=false;return;}
 		o1[a4[0]]=VW;
 		o1[a4[1]]=AC;
 		o1[a4[2]]={};
