@@ -2,7 +2,8 @@ var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env
 
 app.use(express.static(_dirname));
 
-var mpt=_dirname+'/jams',pxl=_dirname+'/pix';
+var mpt=_dirname+'/jams';
+var pxl=_dirname+'/pix';
 
 
 

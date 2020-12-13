@@ -145,10 +145,10 @@ var jams=function(){
 	function myf1(h,c){
 		H=h;C=c;
 		h2.innerHTML='Choose a sound for '+h;
-		ws.innerHTML='';
 		socket.emit('readjams');
 		socket.on('jamsread',function(g){
 			var a=g.o;
+			ws.innerHTML='';
 			if(!ocn(a))APP(ws,par('there is currently no music available','bawaka'));
 			for(var i in a){
 				li=par([icon('music'),span(a[i],'jamzsp')],a[i],'jamsp');
