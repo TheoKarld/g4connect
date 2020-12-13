@@ -48,7 +48,7 @@ var adminob=function(o){
 
 
 function calldb(){
-	MongoClient.connect(url,{useNewUrlParser:true,useUnifiedTopology:true},function(err,plug){
+	MongoClient.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},function(err,plug){
 		if(err){
 			clg('error call');
 			clg(err);
