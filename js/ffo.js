@@ -192,7 +192,7 @@ var login=function(){
 	
 }
 var artbox=function(o,iv,c){
-	var il=(o.pic)?o.pic:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws,vpd(iv,c)]),eo={};
+	var il=(o.pix)?'pix/'+o.pix:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws,vpd(iv,c)]),eo={};
 	eo.e=rd;
 	eo.u=ul;
 	function voteme(){

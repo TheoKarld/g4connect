@@ -1,8 +1,11 @@
-var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic','songs'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users','uncleared'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com",mpt=_dirname+'/music/';
-
-
+var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic','songs'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users','uncleared'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com";
 
 app.use(express.static(_dirname));
+
+var mpt=_dirname+'/music',pxl=_dirname+'/pix';
+
+
+
 
 app.get('/',function(req,res){
 	res.end(fsread('hoodfix1.html'));
@@ -320,9 +323,30 @@ function readme(pth,con){
 		con(ar);
 	});
 }
+function readpix(pth,con){
+	var ar=[];
+	fs.readdir(pth,function(err,files) {
+		if(err) {
+			return console.error(err); 
+		}
+		files.forEach(function(file) {
+			ex = file.split('.');
+			ex = ex[ex.length-1].toLowerCase();
+			if(ex=='png'||ex=='jpg')ar.push(file);
+		});
+		con(ar);
+	});
+}
 function addjam(o){
 	if(!ll[la[4]][o.o][o.c][o.a].jams)ll[la[4]][o.o][o.c][o.a].jams={};
+	if(ll[la[4]][o.o][o.c][o.a].jams[o.j])return;
 	ll[la[4]][o.o][o.c][o.a].jams[o.j]=true;
+	writelog('ll');
+}
+function addpix(o){
+	if(ll[la[4]][o.o][o.c][o.a].pix==o.p)return;
+	ll[la[4]][o.o][o.c][o.a].pix=o.p;
+	writelog('ll');
 }
 
 
@@ -421,6 +445,17 @@ io.on('connection',function(socket){
 		addjam(o);
 		
 	});
-	
+	socket.on('readpix',function(){
+		if(!ll)return;
+		readpix(pxl,jeka);
+		 function jeka(a){
+			var o={o:a};
+			socket.emit('pixread',o);
+		}
+	});
+	socket.on('addpix',function(o){
+		if(!ll)return;
+		addpix(o);
+	});
 });
 
