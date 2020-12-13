@@ -301,7 +301,7 @@ var colbox=function(id,l,m,s,x,cl){
 	if(cl)for(var i in cl)APP(rd,cl[i]);
 	return rd;
 }
-var bottle = function(nam,c,id) {
+var bottle = function(nam,c,id){
   var b = $$$('button');
      if(id) {
       b.id = id+'-button';

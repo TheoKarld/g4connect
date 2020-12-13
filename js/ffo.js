@@ -98,6 +98,7 @@ var ihd=function(a,id){
 		APP(rd,l);
 	}
 	return rd;
+	
 }
 var vpd=function(iv,id){
 	var a=(iv)?[suk[1],kus[1]]:[suk[0],kus[0]],k=ihd(a,id);
@@ -142,7 +143,7 @@ var login=function(){
 					APP(rd,bb);
 				}
 				wok=false;
-				alert('check your gmail inbox to retrieve your userID '+v1+'. if you did not recieve your login credentials then you enter an inactive email. Please try signing up with an active email');
+				alert('check your gmail inbox to retrieve your userID '+v1+'. if you did not recieve your login credentials then you entered an inactive email. Please try signing up with an active email');
 			});
 		}else{
 			var v1=cleaname(ul.o[F1[0]].value),v2=ul.o[F1[1]].value,v3,v4,o1;
@@ -389,7 +390,6 @@ var votefix=function(){
 	
 }
 
-	
 	return {
 		start:function(){
 			init();

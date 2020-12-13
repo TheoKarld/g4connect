@@ -1,4 +1,4 @@
-var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users','uncleared'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com";
+var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env.PORT||3030,nodemailer=require('nodemailer'),kwport = nodemailer.createTransport({host:"smtp.gmail.com",port:465,secure:true,auth:{user:"karldworldc9@gmail.com",pass:"cosmicnine"}}),mongo=require('mongodb'),MongoClient=mongo.MongoClient,uri="mongodb+srv://myfunfs:DgpArwtmZysmZTGS@cluster0.31eaj.mongodb.net",url='mongodb://127.0.0.1:27017',dbn='hoodfix1',CL='',ADM='',fs=require('fs'),express=require('express'),app=express(),server=app.listen(port,calldb),io=require('socket.io')(server),path=require('path'),db='',_dirname=path.resolve(),ll='',ids=['admindl'],S1=['Facebook','Instagram','Whatsapp'],M1=['Name','Song','Comments','Category','Area','Facebook','Whatsapp','Instagram','pic','songs'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['fid','event','date','advert','vote','sports activities','users','uncleared'],A1=['name','images','price','call'],A2=['ceo','company','logo','company','company address','contact'],V2=['Music','Street Cred','Sports'],A4=['advertiser','products'],V1=['name','email','ID'],FI='',a4=['rack','category','votes'],F3=['username','email','phone number'],F1=['username','userID'],hem="karldworldc9@gmail.com",mpt=_dirname+'/music/';
 
 
 
@@ -48,7 +48,7 @@ var adminob=function(o){
 
 
 function calldb(){
-	MongoClient.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},function(err,plug){
+	MongoClient.connect(url,{useNewUrlParser:true,useUnifiedTopology:true},function(err,plug){
 		if(err){
 			clg('error call');
 			clg(err);
@@ -301,6 +301,32 @@ function removeusers(a){
 	}
 	if(w)writelog('ll');
 }
+function rmvarti(o){
+	if(!ll)return;
+	delete ll[la[4]][o.o][o.i][o.c];
+	writelog('ll');
+}
+function readme(pth,con){
+	var ar=[];
+	fs.readdir(pth,function(err,files) {
+		if(err) {
+			return console.error(err); 
+		}
+		files.forEach(function(file) {
+			ex = file.split('.');
+			ex = ex[ex.length-1].toLowerCase();
+			if(ex=='mp3')ar.push(file);
+		});
+		con(ar);
+	});
+}
+function addjam(o){
+	if(!ll[la[4]][o.o][o.c][o.a].jams)ll[la[4]][o.o][o.c][o.a].jams={};
+	ll[la[4]][o.o][o.c][o.a].jams[o.j]=true;
+}
+
+
+
 
 
 io.on('connection',function(socket){
@@ -372,5 +398,29 @@ io.on('connection',function(socket){
 		if(!ll)return;
 		chk4clr(o);
 	});
+	socket.on('rmvarti',function(o){
+		if(!ll)return;
+		rmvarti(o);
+		o.co=ll[la[4]];
+		socket.emit('artirmv',o);
+	});
+	socket.on('manvote',function(o){
+		if(!ll)return;
+		voteme(o);
+	});
+	socket.on('readjams',function(){
+		if(!ll)return;
+		readme(mpt,jeka);
+		 function jeka(a){
+			var o={o:a};
+			socket.emit('jamsread',o);
+		}
+	});
+	socket.on('addjam',function(o){
+		if(!ll)return;
+		addjam(o);
+		
+	});
+	
 });
 
