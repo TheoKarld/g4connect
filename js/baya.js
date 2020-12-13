@@ -101,10 +101,11 @@ var hoto=function(){
 	function myf1(h,c){
 		H=h;C=c;
 		h2.innerHTML='Choose a picture for '+h;
-		ws.innerHTML='';
+		
 		socket.emit('readpix');
 		socket.on('pixread',function(g){
 			var a=g.o;
+			ws.innerHTML='';
 			if(!ocn(a))APP(ws,par('there is currently no picture available','bawaka'));
 			for(var i in a){
 				li=par([par([img('/pix/'+a[i],'hotona',a[i])],'hoto-p'),span(a[i],'pixsp')],a[i],'hotosp');
