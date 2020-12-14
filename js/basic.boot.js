@@ -285,7 +285,11 @@ function parse(t,n){
 	if(typeof n=='number')return n;
 	if(t=='i')return parseInt(n);
 }
-
+function obc(o,c){
+	var a=cta(o);
+	if(!a[c])return false;
+	return o[a[c]];
+}
 
 
 
