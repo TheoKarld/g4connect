@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<link rel='icon' href='img/hficon.png' />
+<link rel='stylesheet' type='text/css' href='css/scrollbar.css' />
+<meta charset='UTF-8'>
+<meta http-equiv='X-UA-Compatible' content='IE-edge'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOODFIX TESTER</title>
+<link rel='stylesheet' type='text/css' href='css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='css/bootstrap-social.css'>
+<link rel='stylesheet' type='text/css' href='css/styleit.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type='text/javascript' src='js/basic.boot.js'></script>
+<script type='text/javascript' src='/socket.io/socket.io.js'></script>
+<script type='text/javascript'>
+var bd,VP=DIV('viewpoint','container');
+addEvent(window,'load',function(){
+
+	(function(){
+		bd=document.body;
+		var d,c,f=["videos/vid1.mp4",'videos/vid2.mp4'],j=["jams/father's will.mp3",'jams/trap house.mp3'];
+		APP(bd,kwp());
+		APP(bd,VP);
+		for(var i in f){
+			APP(VP,video(f[i]));
+		}
+		for(var i in j){
+			APP(VP,audio(j[i]));
+		}
+		myEditor(ebt('style')[0],bd);
+	})();
+
+});
+</script>
+<style type='text/css'>
+
+</style>
+</head>
+<body>
+
+</body>
+</html>

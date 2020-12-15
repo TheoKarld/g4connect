@@ -1,4 +1,4 @@
-var A1=['lg','md','sm','xs'],ICN={'film':'glyphicon glyphicon-film','tele':'glyphicon glyphicon-phone-alt','trash':'glyphicon glyphicon-trash',settings:'glyphicon glyphicon-cog',wrench:'glyphicon glyphicon-wrench',tright:'glyphicon glyphicon-triangle-right',voption:'glyphicon glyphicon-option-horizontal',hoption:'glyphicon glyphicon-option-horizontal',off:'glyphicon glyphicon-off',save:'glyphicon glyphicon-save',pencil:'glyphicon glyphicon-pencil',tower:'glyphicon glyphicon-tower',ok:'glyphicon glyphicon-ok',cok:'glyphicon glyphicon-ok-circle',plus:'glyphicon glyphicon-plus',user:'glyphicon glyphicon-user',folder:'glyphicon glyphicon-folder-close',home:'glyphicon glyphicon-home',remove:'glyphicon glyphicon-remove',edit:'glyphicon glyphicon-edit',ques:'glyphicon glyphicon-question-sign',check:'glyphicon glyphicon-check',handup:'glyphicon glyphicon-hand-up',thumbsup:'glyphicon glyphicon-thumbs-up',cloudupload:'glyphicon glyphicon-cloud-upload',tent:'glyphicon glyphicon-tent',leaf:'glyphicon glyphicon-leaf',refresh:'glyphicon glyphicon-refresh',record:'glyphicon glyphicon-record',copy:'glyphicon glyphicon-copy',paste:'glyphicon glyphicon-paste',screenshot:'glyphicon glyphicon-screenshot',asterisk:'glyphicon glyphicon-asterisk',cloud:'glyphicon glyphicon-cloud',book:'glyphicon glyphicon-book',infosign:'glyphicon glyphicon-info-sign',calender:'glyphicon glyphicon-calender',comment:'glyphicon glyphicon-comment',stats:'glyphicon glyphicon-stats',alerti:'glyphicon glyphicon-alert',savefile:'glyphicon glyphicon-save-file',music:'glyphicon glyphicon-music',cplay:'glyphicon glyphicon-play-circle',play:'glyphicon glyphicon-play',download:'glyphicon glyphicon-download-alt',mapmark:'glyphicon glyphicon-map-marker',oksign:'glyphicon glyphicon-ok-sign',link:'glyphicon glyphicon-link'},ftx='Click on the pencil icon to modify any company information, any change made can be undone by simply clicking on the pencil again. Please not you can\'t exit without saving all changes.',upa={action:'fileupload',method:'post',enctype:'multipart/form-data',finp:{type:'file',name:'filetoupload'}};
+var A1=['lg','md','sm','xs'],ICN={'film':'glyphicon glyphicon-film','tele':'glyphicon glyphicon-phone-alt','trash':'glyphicon glyphicon-trash',settings:'glyphicon glyphicon-cog',wrench:'glyphicon glyphicon-wrench',tright:'glyphicon glyphicon-triangle-right',voption:'glyphicon glyphicon-option-horizontal',hoption:'glyphicon glyphicon-option-horizontal',off:'glyphicon glyphicon-off',save:'glyphicon glyphicon-save',pencil:'glyphicon glyphicon-pencil',tower:'glyphicon glyphicon-tower',ok:'glyphicon glyphicon-ok',cok:'glyphicon glyphicon-ok-circle',plus:'glyphicon glyphicon-plus',user:'glyphicon glyphicon-user',folder:'glyphicon glyphicon-folder-close',home:'glyphicon glyphicon-home',remove:'glyphicon glyphicon-remove',edit:'glyphicon glyphicon-edit',ques:'glyphicon glyphicon-question-sign',check:'glyphicon glyphicon-check',handup:'glyphicon glyphicon-hand-up',thumbsup:'glyphicon glyphicon-thumbs-up',thumbsdown:'glyphicon glyphicon-thumbs-down',cloudupload:'glyphicon glyphicon-cloud-upload',tent:'glyphicon glyphicon-tent',leaf:'glyphicon glyphicon-leaf',refresh:'glyphicon glyphicon-refresh',record:'glyphicon glyphicon-record',copy:'glyphicon glyphicon-copy',paste:'glyphicon glyphicon-paste',screenshot:'glyphicon glyphicon-screenshot',asterisk:'glyphicon glyphicon-asterisk',cloud:'glyphicon glyphicon-cloud',book:'glyphicon glyphicon-book',infosign:'glyphicon glyphicon-info-sign',calender:'glyphicon glyphicon-calender',comment:'glyphicon glyphicon-comment',stats:'glyphicon glyphicon-stats',alerti:'glyphicon glyphicon-alert',savefile:'glyphicon glyphicon-save-file',music:'glyphicon glyphicon-music',cplay:'glyphicon glyphicon-play-circle',play:'glyphicon glyphicon-play',download:'glyphicon glyphicon-download-alt',mapmark:'glyphicon glyphicon-map-marker',oksign:'glyphicon glyphicon-ok-sign',link:'glyphicon glyphicon-link'},ftx='Click on the pencil icon to modify any company information, any change made can be undone by simply clicking on the pencil again. Please not you can\'t exit without saving all changes.',upa={action:'fileupload',method:'post',enctype:'multipart/form-data',finp:{type:'file',name:'filetoupload'}};
 
 //ethnocentric
 
@@ -76,6 +76,7 @@ function capname(n){
 	var a=(n.charAt(0)).toUpperCase(),b=n.slice(1,n.length).toLowerCase(),c=a+b;return c;
 }
 function cleaname(n){
+	if(parseInt(n))return n;
 	var a=n.split(' '),c='',d=[];
 	for(var i=0;i<a.length;i++){if(a[i]){d.push(capname(a[i]));}}
 	for(var i=0;i<d.length;i++){if(i==d.length-1){c+=d[i]}else{c+=d[i]+' ';}}
@@ -290,7 +291,15 @@ function obc(o,c){
 	if(!a[c])return false;
 	return o[a[c]];
 }
-
+//replace in object....
+function rio(o,v,r){
+	var a={},b;
+	for(var i in o){
+		b=(i==v)?r:i;
+		a[b]=o[i]
+	}
+	return a;
+}
 
 
 var mrgar=function(a,b){
@@ -707,7 +716,7 @@ var nav=function(cl){
 }
 //flexie(i,{t:i,v:o[i]},{f:'pencil',s:'ok'})
 var flexie=function(id,ct,bt,ag){
-	var ii=(ag)?ag.i:'',ad=par(ct.t,'dtag','col'),sp=par(ct.v,'flx-sp','col'),ip=input('','flx-ip',ii),is=par([sp,ip],'flxis-dv'),b1=(!bt)?'':but([icon(bt.f)],'button',bt.f,'btn btn-link btn-lg'),b2=(!bt)?'':but([icon(bt.s)],'button',bt.s,'btn btn-link btn-lg'),bd=(!bt)?'':par([b1,b2],'flxbut',ag.c),rd=DIV(id,'input-group input-group-md flexie','',[ad,is]),so='',eo={};
+	var ii=(ag)?ag.i:'',ad=par(ct.t,'dtag','col'),sp=par(ct.v,'flx-sp','col'),ip=input('','flx-ip',ii),is=par([sp,ip],'flxis-dv'),b1=(!bt)?'':but([icon(bt.f,id)],'button',bt.f,'btn btn-link btn-lg'),b2=(!bt)?'':but([icon(bt.s,id)],'button',bt.s,'btn btn-link btn-lg'),bd=(!bt)?'':par([b1,b2],'flxbut',ag.c),rd=DIV(id,'input-group input-group-md flexie','',[ad,is]),so='',eo={};
 	if(bt&&bt.f)APP(rd,bd);
 	ad.style.display='inline-block';is.style.display='inline-block';if(bd)bd.style.display='inline-block';
 	eo.e=rd;
@@ -722,6 +731,7 @@ var flexie=function(id,ct,bt,ag){
 		}else{
 			ip.style.display='';if(b2)b2.style.display='';sp.style.display='none';if(b1)b1.style.display='none';
 			ip.value=ct.v;
+			if(id==S1[2]){ip.type='number';}else{ip.type='text';}
 			so=false;
 		}
 	}
@@ -882,5 +892,22 @@ var sanc=function(f){
 var isanc=function(c,ic){
 	var b1=['btn btn-xs btn-social-icon btn-openid','btn btn-sm btn-social-icon btn-openid','btn btn-md btn-social-icon btn-openid'],rd=anc('',[ic],b1[c],'dtanc',{role:'button'});
 	return rd;
+}
+var source=function(f){
+	var t='video/'+f.split('.')[1],d=$$$('source');
+	clg({src:f,type:t});
+	attme(d,{src:f,type:t,controls:'controls'});
+	return d;
+	
+}
+var video=function(s){
+	var d=$$$('video');
+	attme(d,{controls:'controls',src:s})
+	return d;
+}
+var audio=function(s){
+	var d=$$$('audio');
+	attme(d,{controls:'controls',src:s})
+	return d;
 }
 

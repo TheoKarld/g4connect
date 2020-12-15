@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users','uncleared'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',ntxt='Sorry Dear, we are still getting things ready for the you esteem satisfaction....',WA=['not ready','vote','login'],WM='',XC='',itv='',WV='',sua={},suo={},cao={},muo={},mua={},AC='',VW='',F1=['username','userID'],F2=['insert your username','insert your userID'],F3=['username','email','phone number'],F4=['insert a username of your choice.','insert a valid email, through which you will recieve your userID','insert a valid phone number'],luo={},ME='',grl='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp',suk=[['vote','play','download'],['play','download']],kus=[['handup','play','download'],['play','download']],jamz={};
+	var ll='',ffo={},M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users','uncleared'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',ntxt='Sorry Dear, we are still getting things ready for the you esteem satisfaction....',WA=['not ready','vote','login'],WM='',XC='',itv='',WV='',sua={},suo={},cao={},muo={},mua={},AC='',VW='',F1=['username','userID'],F2=['insert your username','insert your userID'],F3=['username','email','phone number'],F4=['insert a username of your choice.','insert a valid email, through which you will recieve your userID','insert a valid phone number'],luo={},ME='',grl='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp',suk=[['vote','play','download'],['play','download']],kus=[['thumbsup','play','download'],['play','download']],uv=[['unvote','play','download'],['thumbsdown','play','download']],jamz={},aud={};
 	
 	
 	
@@ -13,6 +13,7 @@ function boot(o){
 	clg(o);
 	callogin();
 	plugjams();
+	aplayer();
 }
 function bringup(cl,cv){
 	if(cv){
@@ -93,16 +94,43 @@ function plugjams(){
 	for(var i in o){
 		a=o[i];
 		for(var v in a){
-			jamz[v]=(a[v].jams&&obc(a[v].jams,0))?'jams/'+cta(a[v].jams)[0]:'#';
+			jamz[v]=(a[v].jams&&obc(a[v].jams,0))?'jams/'+cta(a[v].jams)[0]:'';
 		}
 	}
-	clg(jamz)
+	
 }
 
 
 
-var ihd=function(a,id,at){
-	clg(at);
+
+var aplayer=function(){
+	var h=hea(2,'','aplay-h'),hd=pah('aplay-hd',[h]),au=audio(''),ws=colbox('aplay-ws',12,12,12,12,[au]),rd=colbox('aplayer',2,2,3,10,[par([but([icon('off')],'button','xaplay','btn btn-xs btn-default')],'aplay-xp'),hd,ws]);
+	aud.e=rd;rd.style.position='fixed';rd.style.top='2em';rd.style.right='.5em';
+	aud.f1=myf1;
+	aud.f2=myf2;
+	aud.f3=myf3;
+	function myf2(){
+		X(rd);
+		au.src='';
+	}
+	function myf1(h1,l){
+		var pa=fada(rd)
+		if(pa)au.pause();
+		h.innerHTML=h1;au.src=l;
+		if(pa)au.play();
+	}
+	function myf3(){
+		APP(VP,rd);
+		au.play();
+	}
+	
+	addEvent(rd,'click',function(e){
+		e=ee(e);
+		if(e.id=='xaplay'||fada(e).id=='xaplay')myf2();
+		
+	});
+}
+var ihd=function(a,id,at,vo){
 	var a1=a[0],a2=a[1],rd=butgroup(3,[],id),l,z;
 	addclass(rd,'ihd');
 	for(var i in a1){
@@ -113,8 +141,10 @@ var ihd=function(a,id,at){
 	return rd;
 	
 }
-var vpd=function(iv,id,at){
-	var a=(iv)?[suk[1],kus[1]]:[suk[0],kus[0]],k=ihd(a,id,at);
+var vpd=function(iv,id,at,vo){
+	var a,k;
+	if(iv){a=(vo[ME])?uv:[suk[1],kus[1]]}else{a=[suk[0],kus[0]]}
+	k=ihd(a,id,at);
 	return k;
 }
 var login=function(){
@@ -205,7 +235,7 @@ var login=function(){
 	
 }
 var artbox=function(o,iv,c){
-	var il=(o.pix)?'pix/'+o.pix:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws,vpd(iv,c,o[M1[0]])]),eo={};
+	var il=(o.pix)?'pix/'+o.pix:'img/user.jpg',ul=sieul(cto(M2),o,[icon('user'),icon('music'),icon('mapmark'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws,vpd(iv,c,o[M1[0]],o.votes)]),eo={};
 	eo.e=rd;
 	eo.u=ul;
 	function voteme(){
@@ -215,11 +245,25 @@ var artbox=function(o,iv,c){
 			mua.o[c].f1();
 		});
 	}
+	function playme(){
+		var j=jamz[o[M1[0]]];
+		if(!j){alert(o[M1[0]]+' has no added music.');return;}
+		aud.f1(j.split('/')[1].split('.')[0],j);
+		aud.f3();
+	}
+	function unvoteme(){
+		delete ll[la[3]][V1[0]][c][o[M1[0]]].votes[ME];
+		socket.emit('unvote',{w:V1[0],ct:c,a:o[M1[0]],vt:ME});
+		socket.on('voteun',function(o3){
+			mua.o[c].f1();
+		});
+	}
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
-		if(e.id=='vote')voteme();
-		
+		if(e.id=='vote'||e.innerHTML=='vote')voteme();
+		if(e.id=='play'||e.innerHTML=='play')playme();
+		if(e.id=='unvote'||e.innerHTML=='unvote')unvoteme();
 	});
 	return eo;
 }
@@ -278,7 +322,7 @@ var streetbox=function(o,c,iv){
 	var il=(o.pic)?o.pic:'img/user.jpg',ul=sieul(cto(S3),o,[icon('user'),icon('home'),sanc(0,0,0),sanc(1,1,0),sanc(2,2,0)]),artimg=pah(o[M1[0]],[img(il,o[M1[0]],'artbx-img')],'artbox-hd'),ws=colbox('artbox-ws',12,12,12,12,[ul.e]),rd=colbox('artbox',3,3,6,11,[artimg,ws]),eo={};
 	eo.e=rd;
 	eo.u=ul;
-	if(!iv)APP(rd,ihd([['vote'],['handup']],c));
+	if(!iv){APP(rd,ihd([['vote'],['thumbsup']],c));}else if(o.votes[ME]){APP(rd,ihd([['unvote'],['thumbsdown']],c));}
 	
 	function voteme(){		
 		ll[la[3]][V1[1]][c][o[M1[0]]].votes[ME]=true;
@@ -287,10 +331,17 @@ var streetbox=function(o,c,iv){
 			sua.o[c].f1();
 		});
 	}
-	
+	function unvoteme(){
+		delete ll[la[3]][V1[1]][c][o[M1[0]]].votes[ME];
+		socket.emit('unvote',{w:V1[1],ct:c,a:o[M1[0]],vt:ME});
+		socket.on('voteun',function(o3){
+			sua.o[c].f1();
+		});
+	}
 	addEvent(rd,'click',function(e){
 		e=ee(e);
-		if(e.id=='vote')voteme();
+		if(e.id=='vote'||fada(e).id=='vote')voteme();
+		if(e.id=='unvote'||fada(e).id=='unvote')unvoteme();
 		 
 	});
 	return eo;

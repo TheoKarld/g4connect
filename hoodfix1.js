@@ -2,8 +2,7 @@ var key='karldWorldC9',version='0.0.1',name='HoodFix',myself='',port=process.env
 
 app.use(express.static(_dirname));
 
-var mpt=_dirname+'/jams';
-var pxl=_dirname+'/pix';
+var mpt=_dirname+'/jams',pxl=_dirname+'/pix',vid='_dirname'+'/videos';
 
 
 
@@ -13,6 +12,9 @@ app.get('/',function(req,res){
 });
 app.get('/bayana',function(req,res){
 	res.end(fsread('bayanhf.html'));
+});
+app.get('/tester',function(req,res){
+	res.end(fsread('tester.html'));
 });
 
 
@@ -97,6 +99,11 @@ function cto(a){
 function clonea(a){
 	var r=[];
 	for(var i in a)r.push(a[i]);
+	return r;
+}
+function cloneo(a){
+	var r={};
+	for(var i in a)r[i]=a[i];
 	return r;
 }
 function jp(o){
@@ -291,6 +298,10 @@ function voteme(o){
 	ll[la[4]][o.w][o.ct][o.a].votes[o.vt]=true;
 	writelog('ll');
 }
+function unvote(o){
+	delete ll[la[4]][o.w][o.ct][o.a].votes[o.vt];
+	writelog('ll');
+}
 function chk4clr(o){
 	if(ll[la[7]][o.i]){
 		ll[la[6]][o.i]=ll[la[7]][o.i];
@@ -349,8 +360,28 @@ function addpix(o){
 	ll[la[4]][o.o][o.c][o.a].pix=o.p;
 	writelog('ll');
 }
-
-
+function wipejams(o){
+	if(!ocn(ll[la[4]][V2[0]][o.w][o.n].jams))return;
+	ll[la[4]][V2[0]][o.w][o.n].jams={};
+	writelog('ll');
+	clg('wiped');
+}
+function mybio(o){
+	ll[la[4]][o.o][o.w][o.a][o.b]=o.v;
+	if(o.b==M1[0]){
+		ll[la[4]][o.o][o.w]=rio(ll[la[4]][o.o][o.w],o.a,o.v);
+	}
+	writelog('ll');
+	
+}
+function rio(o,v,r){
+	var a={},b;
+	for(var i in o){
+		b=(i==v)?r:i;
+		a[b]=o[i]
+	}
+	return a;
+}
 
 
 
@@ -419,6 +450,11 @@ io.on('connection',function(socket){
 		voteme(o);
 		socket.emit('mevote');
 	});
+	socket.on('unvote',function(o){
+		if(!ll)return;
+		unvote(o);
+		socket.emit('voteun');
+	});
 	socket.on('chk4clr',function(o){
 		if(!ll)return;
 		chk4clr(o);
@@ -457,6 +493,16 @@ io.on('connection',function(socket){
 	socket.on('addpix',function(o){
 		if(!ll)return;
 		addpix(o);
+	});
+	socket.on('wipejams',function(o){
+		if(!ll)return;
+		wipejams(o);
+		
+	});
+	socket.on('mybio',function(o){
+		if(!ll)return;
+		mybio(o);
+		
 	});
 });
 

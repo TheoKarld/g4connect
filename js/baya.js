@@ -1,5 +1,5 @@
 var gear=(function(){
-	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],S1=['facebook','instagram','whatsapp'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={},ctd={},cod={},suk=[['picture','manual'],['user','handup']],kus=[['picture','manual','add song'],['user','handup','plus']],deal={},jam={},pxo={};
+	var ll='',ffo={},F1=['Event','Event date'],F2=['insert the name of the event','insert event date.'],WA=['register','votefix','new artist','new contestant'],WV='',XC='',WM='',m1=['add category','delete category'],M1=['Name','Song','Category','Area','Facebook','Whatsapp','Instagram'],S2=['Name','Category','Area','Facebook','Whatsapp','Instagram','votes'],S3=['Name','Area','Facebook','Whatsapp','Instagram'],P1=['Name','Team','Position','Goals','Area'],la=['event','date','advert','vote','sports activities','users'],nvc=['nav nav-pills nav-stacked','list-inline'],V1=['Music','Street Cred','Sports'],WT='',vtx='There is no voting without a "vote ID". If you yet have one, click on the "quick sign up" button below to quickly sign up with just your name and email. If you already have a vote ID, select any of the above options to start voting. Thank You.......',nct='there is currently no registered category, please create one to begin.',muo={},CF='',cao={},CR='',mua={},M2=['Name','Song','Area','Facebook','Whatsapp','Instagram'],AC='',VW='',a4=['rack','category','votes'],suo={},sua={},ctd={},cod={},suk=[['picture','manual'],['user','handup']],kus=[['picture','manual','add song','wipe jams'],['user','handup','plus','trash']],deal={},jam={},pxo={};
 	
 
 function init(){
@@ -396,12 +396,33 @@ var streetbox=function(o,c){
 		ll[la[3]][V1[1]][c][o[M1[0]]].votes[fc]=true;
 		socket.emit('manvote',{w:V1[1],ct:c,a:o[M1[0]],vt:fc});
 	}
-	
+	function editme(hu){
+		ul.o[hu].f();
+		Mng=true;
+	}
+	function saveme(hu){
+		var v1=o[hu],v2=(hu==S1[2])?ul.o[hu].v.value:cleaname(ul.o[hu].v.value),aa;
+		if(v1==v2){
+			ul.o[hu].f();
+		}else{
+			ul.o[hu].f(true);
+			ll[la[3]][V1[1]][c][o[M1[0]]][hu]=v2;
+			o[hu]=v2;
+			if(hu==M1[0])ll[la[3]][V1[1]][c]=rio(ll[la[3]][V1[1]][c],v1,v2);
+			aa=(hu==M1[0])?v1:o[M1[0]];
+			socket.emit('mybio',{o:V1[1],w:c,a:aa,b:hu,v:v2});
+			sua.o[c].f1();
+		}
+		Mng=false;
+		
+	}
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
 		if(e.id=='manual')manvote();
-		 
+		if(fada(e).id=='edit'&&!Mng)editme(e.id);
+		if(fada(e).id=='ok')saveme(e.id);
+		
 	});
 	return eo;
 }
@@ -485,16 +506,42 @@ var artbox=function(o,c){
 		ll[la[3]][V1[0]][c][o[M1[0]]].votes[fc]=true;
 		socket.emit('manvote',{w:V1[0],ct:c,a:o[M1[0]],vt:fc});
 	}
-	
-	
+	function wipejams(){
+		var o1={w:c,n:o[M1[0]]};
+		if(!ocn(ll[la[3]][V1[0]][c][o1.n].jams)){alert(o[M1[0]]+' has no added songs');return;}
+		ll[la[3]][V1[0]][c][o1.n].jams={};
+		socket.emit('wipejams',o1);
+		alert('jams wiped successfully!!');
+	}
+	function editme(hu){
+		ul.o[hu].f();
+		Mng=true;
+	}
+	function saveme(hu){
+		var v1=(hu==S1[2])?o[hu]:o[hu],v2=(hu==S1[2])?ul.o[hu].v.value:cleaname(ul.o[hu].v.value),aa;
+		if(v1==v2){
+			ul.o[hu].f();
+		}else{
+			ul.o[hu].f(true);
+			ll[la[3]][V1[0]][c][o[M1[0]]][hu]=v2;
+			o[hu]=v2;
+			aa=(hu==M1[0])?v1:o[M1[0]];
+			socket.emit('mybio',{o:V1[0],w:c,a:aa,b:hu,v:v2});
+			if(hu==M1[0])ll[la[3]][V1[0]][c]=rio(ll[la[3]][V1[0]][c],v1,v2);
+			mua.o[c].f1();
+		}
+		Mng=false;
+	}
 	
 	addEvent(rd,'click',function(e){
 		e=ee(e);
 		//here
-		if(e.id=='add song'||e.innerHTML=='add song'){ffo.vf('myjam');jam.f1(o[M1[0]],o[a4[1]]);}
+		if(!Mng&&(e.id=='add song'||e.innerHTML=='add song')){ffo.vf('myjam');jam.f1(o[M1[0]],o[a4[1]]);}
 		if(!Mng&&(e.id=='manual'||e.innerHTML=='manual'))manvote();
-		if(e.id=='picture'||e.innerHTML=='picture'){ffo.vf('hotona');pxo.f1(o[M1[0]],o[a4[1]]);}
-		
+		if(!Mng&&(e.id=='picture'||e.innerHTML=='picture')){ffo.vf('hotona');pxo.f1(o[M1[0]],o[a4[1]]);}
+		if(!Mng&&(e.id=='wipe jams'||e.innerHTML=='wipe jams'))wipejams();
+		if(fada(e).id=='edit'&&!Mng)editme(e.id);
+		if(fada(e).id=='ok')saveme(e.id);
 	});
 	return eo;
 }
